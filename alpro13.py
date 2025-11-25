@@ -1,10 +1,13 @@
+#PENGELOLAAN BARANG
 import os
-#Pengelolaan Barang
 
+#dict kosong untuk menyimpan data
 data_barang = {}
 
+#menghitung panjang data pada dict data_barang
 angka = len(data_barang)
 
+#fungsi tambah barang
 def tambah():
   global angka
 
@@ -23,12 +26,13 @@ def tambah():
   data_barang.update({kode:barang})
   tampilkan(data_barang)
 
+#fungsi hapus barang
 def hapus(kode_barang):
   del data_barang[kode_barang]
   print('Data berhasil Dihapus!')
   tampilkan(data_barang)
 
-
+#fungsi cari barang berdasarkan nama
 def cari(nama_barang):
     ditemukan = False
     print('='*57)
@@ -46,12 +50,13 @@ def cari(nama_barang):
       print('Data Tidak Ditemukan')
     print('='*57)
 
+#fungsi tampilkan semua barang
 def tampilkan(dictionary):
   print('='*57)
   print(f"{'KODE':<7} {'Nama Barang':<20} {'Harga':<15} {'Stok':<15}")
   print('='*57)
   if len(dictionary)  == 0:
-    print('Maaf belum ada data barang yang  anda masukkan')
+    print('Maaf belum ada data barang yang anda masukkan')
   else:
     for kode in dictionary :
       nama_barang = dictionary[kode]['nama']
@@ -77,22 +82,30 @@ def stok():
       print('Tidak ada barang yang stok < 5')
     print('='*57)
     
-
+#fungsi untuk ambil harga pada dict
 def ambilharga(item):
   return item[1]['harga']
 
+#sort barang berdasarkan harga (mahal => murah)
 def SortHarga(dictionary, reverse=True):
   sorted_barang = sorted(dictionary.items(), key=ambilharga, reverse=reverse)
   return dict(sorted_barang)
 
-  
 
+#PAGE HEAD
+print('='*30)
+print(f'{"PROGRAM PENGELOLAAN BARANG SEDERHANA":^30}')
+print(f'{"oleh Emannuel Henji":^30}')
+print('='*30)
 
+#Perulangan Program Utama
 while True:
   print('\n')
   print('Apa yang anda perlukan? \n1. Tambah Barang \n2. Hapus Barang \n3. Cari Barang Berdasarkan Nama \n4. Tampilkan Barang \n5. Tampilkan Barang (Stok < 5) \n6. Tampilkan Barang (Mahal -> Murah) \n7. Tutup Aplikasi')
   operasi = input('Apa yang akan anda lakukan (1-7): ')
   os.system('cls')
+
+  #pencocokan untuk operasi
   match operasi:
     case '1':
       tambah()
@@ -115,4 +128,6 @@ while True:
     case _:
       print('Pilihan tidak valid')
 
-print('Terimakasih Telah Menggunakan')
+#program selesai
+os.system('cls')
+print('Program Selesai, \nTerimakasih Telah Menggunakan!')
