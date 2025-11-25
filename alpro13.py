@@ -5,7 +5,7 @@ import os
 data_barang = {}
 
 #menghitung panjang data pada dict data_barang
-angka = len(data_barang)
+angka = len(data_barang) #untuk buat kode angka setelah huruf
 
 #fungsi tambah barang
 def tambah():
