@@ -21,8 +21,10 @@ perpus = {
 
 #fungsi tampilkan semua data buku
 def tampilkan_buku():
+    print('-'*82)
     print(f"{'key':<7} {'judul':<20} {'penulis':<20} {'tahun':<5} {'status':<10} {'peminjam':<20}")
-    for key,value in perpus.items():
+    print('-'*82)
+    for key in perpus:
         judul = perpus[key]['judul']
         penulis = perpus[key]['penulis']
         tahun = perpus[key]['tahun']
@@ -30,6 +32,8 @@ def tampilkan_buku():
         peminjam = perpus[key]['peminjam']
 
         print(f"{key:<7} {judul:<20} {penulis:<20} {tahun:<5} {status:<10} {peminjam:<20}")
+    
+    print('-'*82)
 
 #fungsi untuk pinjam buku
 def pinjam_buku(judul,nama,status='DIPINJAM'):
@@ -42,7 +46,9 @@ def pinjam_buku(judul,nama,status='DIPINJAM'):
             perpus[key]['status'] = status
             perpus[key]['peminjam'] = nama
             os.system('cls')
-            print(f'Anda berhasil meminjam buku {judul} karya {penulis}')
+            print('-'*82)
+            print(f'Anda berhasil meminjam buku "{judul}" karya "{penulis}"')
+            print('-'*82)
             break
     if ditemukan == False:
         print('Maaf buku tidak ada / tidak dapat dipinjam') 
@@ -57,7 +63,7 @@ def kembalikan_buku(judul,nama,status='TERSEDIA'):
             penulis = perpus[key]['penulis']
             perpus[key]['status'] = status
             perpus[key]['peminjam'] = ''
-            print(f'Anda berhasil mengembalikan {judul} karya {penulis}')
+            print(f'Anda berhasil mengembalikan "{judul}" karya "{penulis}"')
             tampilkan_buku()
             break
     if ditemukan == False:
@@ -66,7 +72,9 @@ def kembalikan_buku(judul,nama,status='TERSEDIA'):
 #fungsi untuk mencari buku berdasarkan judul
 def cari_judul(judul):
     ditemukan = False
+    print('-'*82)
     print(f"{'key':<7} {'judul':<20} {'penulis':<20} {'tahun':<5} {'status':<10} {'peminjam':<20}")
+    print('-'*82)
     for key,value in perpus.items():
         if value['judul'] == judul:
             ditemukan = True
@@ -80,10 +88,14 @@ def cari_judul(judul):
     if ditemukan == False:
         print('Maaf data buku tidak ditemukan')
 
+    print('-'*82)
+
 #fungsi untuk mencari buku berdasarkan penulis
 def cari_penulis(penulis):
     ditemukan = False
+    print('-'*82)
     print(f"{'key':<7} {'judul':<20} {'penulis':<20} {'tahun':<5} {'status':<10} {'peminjam':<20}")
+    print('-'*82)
     for key,value in perpus.items():
         if value['penulis'] == penulis:
             ditemukan = True
@@ -96,11 +108,14 @@ def cari_penulis(penulis):
             
     if ditemukan == False:
         print('Maaf data buku tidak ditemukan')
+    print('-'*82)
 
 #fungsi untuk tampilkan buku yang dipinjam
 def buku_dipinjam():
     ditemukan = False
+    print('-'*82)
     print(f"{'key':<7} {'judul':<20} {'penulis':<20} {'tahun':<5} {'status':<10} {'peminjam':<20}")
+    print('-'*82)
     for key,value in perpus.items():
         if value['status'] == 'DIPINJAM':
             ditemukan = True
@@ -113,7 +128,8 @@ def buku_dipinjam():
             print(f"{key:<7} {judul:<20} {penulis:<20} {tahun:<5} {status:<10} {peminjam:<20}")
     if ditemukan == False:
         print('Maaf data buku tidak ditemukan')
-
+    print('-'*82)
+    
 #PAGE HEAD
 print('='*30)
 print(f'{"PROGRAM PERPUSTAKAAN SEDERHANA":^30}')
